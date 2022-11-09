@@ -15,7 +15,7 @@ const Search = (props) => {
         return {
           options: response.data.map((city) => {
             return {
-              value: `${city.latitude} ${city.longitude}`,
+              value: [city.latitude, city.longitude],
               label: `${city.name} ${city.countryCode}`,
             };
           }),
@@ -32,7 +32,7 @@ const Search = (props) => {
   return (
     <AsyncPaginate
       placeholder="Search for city"
-      debounceTimeout={600}
+      debounceTimeout={1000}
       value={search}
       onChange={handleOnChange}
       loadOptions={loadOptions}

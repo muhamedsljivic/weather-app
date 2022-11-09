@@ -1,6 +1,6 @@
 .container {
-  max-width: 1080px;
-  margin: 20px auto;
+  max-width: 850px;
+  margin: 40px auto;
 
   position: relative;
   text-align: center;
@@ -9,11 +9,13 @@
 
 .img {
   width: 100%;
+  border-radius: 10px;
   max-height: 650px;
 }
 
 .weatherInfo {
   position: absolute;
+  border-radius: 10px;
   top: 0;
   right: 0;
   color: #000;
@@ -22,4 +24,30 @@
   height: 630px;
   padding: 10px;
   backdrop-filter: blur(10px);
+}
+
+.cityName,
+.cityDetails p {
+  position: absolute;
+  left: 160px;
+}
+.cityName {
+  bottom: 150px;
+  letter-spacing: 2px;
+}
+
+.cityDetails p {
+  position: absolute;
+  bottom: 140px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.degree {
+  font-family: "Open Sans", sans-serif;
+  font-size: 60px;
+
+  position: absolute;
+  bottom: 100px;
+  left: 55px;
 }

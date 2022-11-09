@@ -1,0 +1,23 @@
+.cityName {
+  position: absolute;
+  bottom: 150px;
+  left: 150px;
+  letter-spacing: 2px;
+}
+
+.cityDetails p {
+  position: absolute;
+  bottom: 140px;
+  left: 150px;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.degree {
+  font-family: "Open Sans", sans-serif;
+  font-size: 60px;
+
+  position: absolute;
+  bottom: 100px;
+  left: 35px;
+}
