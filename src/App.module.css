@@ -26,28 +26,22 @@
   backdrop-filter: blur(10px);
 }
 
-.cityName,
-.cityDetails p {
-  position: absolute;
-  left: 160px;
-}
-.cityName {
-  bottom: 150px;
-  letter-spacing: 2px;
-}
+.weatherDetails {
+  padding-top: 20px;
+  width: 220px;
+  margin: 240px auto 0 auto;
 
-.cityDetails p {
-  position: absolute;
-  bottom: 140px;
-  font-size: 12px;
+  border-top: 2px solid #7a7a7a;
+  color: #ebebeb;
+
   letter-spacing: 1px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
 }
 
-.degree {
-  font-family: "Open Sans", sans-serif;
-  font-size: 60px;
-
-  position: absolute;
-  bottom: 100px;
-  left: 55px;
+.whw {
+  display: flex;
+  font-size: 10px;
+  justify-content: space-between;
 }

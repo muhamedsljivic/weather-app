@@ -1,22 +1,41 @@
-import React from "react";
-import { AsyncPaginate } from "react-select-async-paginate";
-
-import { WEATHER_API_URL } from "../weatherApi";
+import React, { useState } from "react";
+import classes from "./WeatherMainData.module.css";
 
 const WeatherMainData = (props) => {
-  const API_KEY = "afe9b724a26a14fbadda1645cd33f621";
-  const loadWeatherOptions = () => {
-    return fetch(
-      `${WEATHER_API_URL}?lat=${props.lat}&lon=${props.lng}&appid=${API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.error(err));
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
+
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
   };
 
-  return <div>{props.children}</div>;
+  function success(pos) {
+    const crd = pos.coords;
+
+    setLat(crd.latitude);
+    setLng(crd.longitude);
+
+    props.onLatLng(lat, lng);
+  }
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
+  return (
+    <div lat={lat} lng={lng} className={classes.cityDetails}>
+      <h1 className={classes.degree}>
+        {props.isLoaded && Math.round(props.currentWeather.temp - 273.15)}°
+      </h1>
+      <h1 className={classes.cityName}>
+        {props.isLoaded && props.currentWeather.name}
+      </h1>
+      <p>{`${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`}</p>
+    </div>
+  );
 };
 
 export default WeatherMainData;
