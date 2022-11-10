@@ -5,7 +5,7 @@ const WeatherDetails = (props) => {
   return (
     <div className={classes.container}>
       <div className={classes.weatherDetails}>
-        <p>Weather Details</p>
+        <p className={classes.title}>Weather Details</p>
         <div className={classes.whw}>
           <p>Description</p>
           <p>

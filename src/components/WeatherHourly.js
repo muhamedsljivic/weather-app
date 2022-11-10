@@ -3,7 +3,7 @@ import classes from "./WeatherHourly.module.css";
 const WeatherHourly = (props) => {
   return (
     <div className={classes.perHour}>
-      <p>Hourly forecast</p>
+      <p className={classes.title}>Hourly forecast</p>
       {props.isForecastLoaded &&
         props.forecastWeather.temp.map((item, i) => {
           return (

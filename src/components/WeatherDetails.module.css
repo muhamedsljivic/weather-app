@@ -20,3 +20,24 @@
   font-size: 12px;
   justify-content: space-between;
 }
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 850px) {
+  .weatherDetails {
+    width: 180px;
+    letter-spacing: 0.2px;
+  }
+
+  .whw {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

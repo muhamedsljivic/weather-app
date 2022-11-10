@@ -22,3 +22,23 @@
 .tempTime p {
   font-size: 14px;
 }
+
+@media screen and (max-width: 850px) {
+  .perHour {
+    width: 180px;
+    letter-spacing: 0.2px;
+  }
+
+  .whw {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .tempTime p {
+    font-size: 12px;
+  }
+}

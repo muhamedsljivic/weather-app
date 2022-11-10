@@ -23,3 +23,28 @@
   bottom: 100px;
   left: 55px;
 }
+
+@media screen and (max-width: 850px) {
+  .cityName,
+  .cityDetails p {
+    left: 120px;
+  }
+
+  .cityName {
+    bottom: 120px;
+    letter-spacing: 1px;
+  }
+
+  .cityDetails p {
+    bottom: 105px;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+  }
+
+  .degree {
+    font-size: 50px;
+
+    bottom: 82px;
+    left: 30px;
+  }
+}
