@@ -1,9 +1,9 @@
 import classes from "./WeatherDetails.module.css";
+import WeatherHourly from "./WeatherHourly";
 
 const WeatherDetails = (props) => {
-  console.log(props.currentWeather);
   return (
-    <>
+    <div className={classes.container}>
       <div className={classes.weatherDetails}>
         <p>Weather Details</p>
         <div className={classes.whw}>
@@ -27,10 +27,11 @@ const WeatherDetails = (props) => {
           </p>
         </div>
       </div>
-      <div>
-        <p>Hourly</p>
-      </div>
-    </>
+      <WeatherHourly
+        isForecastLoaded={props.isForecastLoaded}
+        forecastWeather={props.forecastWeather}
+      />
+    </div>
   );
 };
 

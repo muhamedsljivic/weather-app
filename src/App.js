@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import classes from "./App.module.css";
 import Search from "./components/Search";
-import img from "./imgs/weather-1.jpg";
+import cloudsImg from "./imgs/weather-1.jpg";
+import clearSkyImg from "./imgs/clear-sky.jpg";
+import thunderstormImg from "./imgs/thunderstorm.jpg";
+import mistImg from "./imgs/mist.jpg";
+import cloudsImgBlur from "./imgs/weather-1-blur.png";
+import thunderstormImgBlur from "./imgs/thunderstorm-blur.png";
+import mistImgBlur from "./imgs/mist-blur.png";
+import clearSkyImgBlur from "./imgs/clear-sky-blur.png";
 import { FORECAST_API_URL, WEATHER_API_URL } from "./api";
 import WeatherMainData from "./components/WeatherMainData";
 import WeatherDetails from "./components/WeatherDetails";
 
-const API_KEY = "afe9b724a26a14fbadda1645cd33f621";
+const API_KEY = "b4a4296b885c7588699125c60c7d16fc";
 
 function App() {
+  const [img, setImg] = useState(cloudsImg);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isForecastLoaded, setIsForecastLoaded] = useState(false);
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
 
@@ -26,7 +35,26 @@ function App() {
           cloudy: data.clouds.all,
           description: data.weather[0].description,
         });
-
+        if (data.weather[0].description.includes("clouds")) {
+          setImg(cloudsImg);
+          document.body.style.backgroundImage = `url(${cloudsImgBlur})`;
+        }
+        if (
+          data.weather[0].description.includes("thunderstorm") ||
+          data.weather[0].description.includes("snow") ||
+          data.weather[0].description.includes("rain")
+        ) {
+          setImg(thunderstormImg);
+          document.body.style.backgroundImage = `url(${thunderstormImgBlur})`;
+        }
+        if (data.weather[0].description.includes("clear")) {
+          setImg(clearSkyImg);
+          document.body.style.backgroundImage = `url(${clearSkyImgBlur})`;
+        }
+        if (data.weather[0].description.includes("mist")) {
+          setImg(mistImg);
+          document.body.style.backgroundImage = `url(${mistImgBlur})`;
+        }
         setIsLoaded(true);
       })
       .catch((err) => console.log(err));
@@ -35,14 +63,23 @@ function App() {
     fetch(`${api}`)
       .then((data) => data.json())
       .then((data) => {
+        const minutes = [];
+        const temp = [];
+        for (let i = 0; i < 6; i++) {
+          temp.push(`${data.list[i].main.temp}`);
+          minutes.push(
+            `${new Date(data.list[i].dt_txt).toLocaleTimeString("en-GB", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}`
+          );
+        }
+
         setForecastWeather({
-          time1: data.list[0].dt,
-          temp1: data.list[0].main.temp,
-          time2: data.list[1].dt,
-          temp2: data.list[1].main.temp,
-          time3: data.list[2].dt,
-          temp3: data.list[2].main.temp,
+          temp,
+          minutes,
         });
+        setIsForecastLoaded(true);
       })
       .catch((err) => console.log(err));
   };
@@ -51,7 +88,9 @@ function App() {
     currentWeatherFetch(
       `${WEATHER_API_URL}lat=${lat}&lon=${lng}&appid=${API_KEY}`
     );
+  }
 
+  if (!isForecastLoaded) {
     forecastWeatherFetch(
       `${FORECAST_API_URL}lat=${lat}&lon=${lng}&appid=${API_KEY}`
     );
@@ -65,10 +104,7 @@ function App() {
     forecastWeatherFetch(
       `${FORECAST_API_URL}lat=${searchData.value[0]}&lon=${searchData.value[1]}&appid=${API_KEY}`
     );
-
-    console.log(forecastWeather);
   };
-
   const handleLatLng = (lat, lng) => {
     setLat(lat);
     setLng(lng);
@@ -77,7 +113,7 @@ function App() {
   return (
     <div className={classes.container}>
       <div>
-        <img className={classes.img} src={img} alt="Weather" />
+        {isLoaded && <img className={classes.img} src={img} alt="Weather" />}
         <WeatherMainData
           onLatLng={handleLatLng}
           isLoaded={isLoaded}
@@ -90,6 +126,7 @@ function App() {
           currentWeather={currentWeather}
           isLoaded={isLoaded}
           forecastWeather={forecastWeather}
+          isForecastLoaded={isForecastLoaded}
         />
       </div>
     </div>

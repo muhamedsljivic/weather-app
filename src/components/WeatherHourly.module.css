@@ -1,4 +1,6 @@
-.weatherDetails {
+.perHour {
+  margin: 50px auto 0 auto;
+
   padding-top: 20px;
   width: 220px;
 
@@ -11,12 +13,12 @@
   font-weight: 300;
 }
 
-.weatherDetails {
-  margin: 240px auto 0 auto;
-}
-
 .whw {
   display: flex;
   font-size: 12px;
   justify-content: space-between;
+}
+
+.tempTime p {
+  font-size: 14px;
 }
