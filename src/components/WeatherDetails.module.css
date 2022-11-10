@@ -1,6 +1,7 @@
 .weatherDetails {
   padding-top: 20px;
   width: 220px;
+  margin: 240px auto 0 auto;
 
   border-top: 2px solid #7a7a7a;
   color: #ebebeb;
@@ -9,10 +10,6 @@
   text-align: left;
   font-size: 12px;
   font-weight: 300;
-}
-
-.weatherDetails {
-  margin: 240px auto 0 auto;
 }
 
 .whw {
@@ -38,6 +35,23 @@
 
   .title {
     font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .weatherDetails {
+    width: 300px;
+    margin: 240px auto 0 auto;
+    text-align: center;
+  }
+
+  .whw {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 16px;
     font-weight: 500;
   }
 }

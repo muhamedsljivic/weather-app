@@ -24,18 +24,36 @@
   color: #000;
 
   width: 35%;
-  max-height: 640px;
+  height: 640px;
   padding: 10px;
   backdrop-filter: blur(10px);
 }
 
 @media screen and (max-width: 850px) {
   .container {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 550px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  body {
+    background-image: none !important;
+  }
+  .img {
+    border-radius: 0;
+    width: 430px;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
     max-height: 630px;
+    overflow: visible;
   }
   .weatherInfo {
+    border-radius: 0;
     padding: 20px;
+    width: 370px;
+    background-color: #47505c;
+    position: static;
   }
 }

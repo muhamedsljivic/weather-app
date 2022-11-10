@@ -48,3 +48,14 @@
     left: 30px;
   }
 }
+
+@media screen and (max-width: 850px) {
+  .cityName,
+  .cityDetails p {
+    left: 150px;
+  }
+
+  .degree {
+    left: 50px;
+  }
+}
