@@ -9,7 +9,7 @@ const Search = (props) => {
     return fetch(
       inputValue.length === 0
         ? `${GEO_API_URL}/cities?minPopulation=1000000`
-        : `${GEO_API_URL}/cities?minPopulation=10000&&namePrefix=${inputValue}`,
+        : `${GEO_API_URL}/cities?minPopulation=1000&&namePrefix=${inputValue}`,
       geoApiOptions
     )
       .then((response) => response.json())

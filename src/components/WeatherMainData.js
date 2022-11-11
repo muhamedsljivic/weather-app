@@ -33,7 +33,7 @@ const WeatherMainData = (props) => {
       <h1 className={classes.cityName}>
         {props.isLoaded && props.currentWeather.name}
       </h1>
-      <p>{`${new Date().toLocaleTimeString()} ${new Date().toLocaleDateString()}`}</p>
+      <p>{props.isLoaded && props.currentWeather.time}</p>
     </div>
   );
 };

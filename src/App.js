@@ -28,12 +28,16 @@ function App() {
     fetch(`${api}`)
       .then((data) => data.json())
       .then((data) => {
+        const timeVar = new Date();
+
+        timeVar.setHours(timeVar.getHours() + (data.timezone / 3600 - 1));
         setCurrentWeather({
           name: data.name,
           temp: data.main.temp,
           wind: data.wind.speed,
           cloudy: data.clouds.all,
           description: data.weather[0].description,
+          time: timeVar.toString().slice(0, 21),
         });
         if (data.weather[0].description.includes("clouds")) {
           setImg(cloudsImg);
